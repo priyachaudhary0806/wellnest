@@ -1,0 +1,281 @@
+/* Clean Modern Accessibility Design System */
+:root {
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Color Palette - Elegant Soft Lavender & Deep Purple Accent */
+  --bg-app: #f8fafc;
+  --bg-app-gradient: linear-gradient(180deg, #faf5ff 0%, #f3e8ff 40%, #f8fafc 100%);
+  --bg-card: #ffffff;
+  --bg-card-hover: #f5f3ff;
+  --bg-elevated: #ffffff;
+  --border-color: #e9d5ff;
+  --border-active: #7c3aed;
+  
+  --text-primary: #1e1b4b;
+  --text-secondary: #4c1d95;
+  --text-muted: #6b21a8;
+  
+  --accent-primary: #7c3aed;
+  --accent-primary-hover: #6d28d9;
+  --accent-secondary: #8b5cf6;
+  --accent-light: #f3e8ff;
+  
+  --success: #16a34a;
+  --success-bg: #f0fdf4;
+  --danger: #dc2626;
+  --danger-bg: #fef2f2;
+  
+  /* Touch & Typography Defaults (Prompt: Title 24-28px, Subtitle 18-20px, Text 16-18px) */
+  --font-size-title: 1.65rem;     /* 26px */
+  --font-size-subtitle: 1.2rem;   /* 19px */
+  --font-size-body: 1.05rem;      /* 17px */
+  --font-size-button: 1.05rem;    /* 17px */
+  --touch-target-min: 52px;
+  
+  /* Radius & Shadows */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  
+  --shadow-sm: 0 2px 8px rgba(124, 58, 237, 0.06);
+  --shadow-md: 0 6px 20px rgba(124, 58, 237, 0.09);
+  --shadow-lg: 0 12px 32px rgba(124, 58, 237, 0.14);
+}
+
+/* High Contrast Mode */
+body.high-contrast {
+  --bg-app: #000000;
+  --bg-app-gradient: #000000;
+  --bg-card: #121212;
+  --bg-card-hover: #1e1e1e;
+  --bg-elevated: #1a1a1a;
+  --border-color: #ffe600;
+  --border-active: #00ffff;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #ffe600;
+  --text-muted: #ffffff;
+  
+  --accent-primary: #ffe600;
+  --accent-primary-hover: #e6cf00;
+  --accent-secondary: #00ffff;
+  --accent-light: #222200;
+  
+  --success: #00ff66;
+  --danger: #ff3333;
+}
+
+/* Large & Extra Large Text Adjustments */
+body.text-size-large {
+  --font-size-title: 1.85rem;
+  --font-size-subtitle: 1.35rem;
+  --font-size-body: 1.15rem;
+  --font-size-button: 1.15rem;
+  --touch-target-min: 58px;
+}
+
+body.text-size-xlarge {
+  --font-size-title: 2.1rem;
+  --font-size-subtitle: 1.5rem;
+  --font-size-body: 1.25rem;
+  --font-size-button: 1.25rem;
+  --touch-target-min: 64px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(124, 58, 237, 0.15);
+}
+
+html {
+  font-size: 16px;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #f1f5f9;
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Mobile App Frame */
+#root {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  background: var(--bg-app-gradient);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 40px rgba(124, 58, 237, 0.12);
+  overflow: hidden;
+}
+
+/* Screen Reader Utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus Ring */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--border-active);
+  outline-offset: 2px;
+}
+
+/* Clean Typography Hierarchy (24-28px titles, 18-20px section titles, 16-18px body) */
+h1, h2 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-title);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+h3, h4 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-subtitle);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+p, span, label, input {
+  font-size: var(--font-size-body);
+}
+
+button {
+  font-family: var(--font-body);
+  font-size: var(--font-size-button);
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  background: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: var(--touch-target-min);
+  border-radius: var(--radius-md);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  padding: 0.875rem 1.5rem;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  padding: 0.875rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-active);
+}
+
+.btn-emergency {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 1.1rem 1.75rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.3);
+}
+
+/* Cards */
+.card {
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-interactive {
+  cursor: pointer;
+}
+
+.card-interactive:hover, .card-interactive:focus-within {
+  border-color: var(--border-active);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Inputs */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.form-input {
+  width: 100%;
+  min-height: var(--touch-target-min);
+  background-color: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1rem;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+}
+
+.form-input:focus {
+  border-color: var(--border-active);
+  outline: none;
+}
+
+/* Animation Utility */
+.fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
